@@ -9,14 +9,14 @@ namespace Web.Controllers
 {
     using System.Web.Http;
     public abstract class BaseController : Controller
-    {
-       /*protected ITwitterData Data { get; private set; }
+    
+{
+        protected ITwitterData Data { get; private set; }
 
         protected BaseController(ITwitterData data)
         {
             this.Data = data;
-        }*/
-
+        }
 
     }
 }
