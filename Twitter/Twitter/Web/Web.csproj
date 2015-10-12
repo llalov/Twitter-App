@@ -223,6 +223,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TweetsController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -300,6 +301,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
