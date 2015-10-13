@@ -2,21 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using Twitter.Data;
+using Web.Models.BindingModels;
 
 namespace Web.Controllers
 {
     public class HomeController : BaseController
     {      
-        public ActionResult Index()
+        public ActionResult Index([FromUri] PaginationBindingModel model)
         {
             ViewBag.Title = "Home";
             var tweets = this.Data.Tweets.All()
-                .OrderBy(t => t.CreatedAt);
+                .OrderByDescending(t => t.CreatedAt)
+                .Skip(model.StartPage * 10)
+                .Take(10);
 
-  
+            var count = this.Data.Tweets.All().Count();
+
+
             return View(tweets);
+            
         }
 
         public ActionResult About()

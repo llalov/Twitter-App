@@ -2,6 +2,36 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
+html > /**/ body .home-wrapper {
+    margin: auto;
+    width: 60%;
+}
+html > /**/ body .tweet-wrapper {
+    border: 1px solid #ABD0BC;
+    border-radius: 0;
+    padding: 1rem;
+    margin: 0.2rem;
+}
+html > /**/ body .icon-retweet {
+    width: 2rem;
+    height: 1rem;
+}
+
+html > /**/ body .icon-favourite {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+html > /**/ body .icon-more {
+    width: 2rem;
+    height: 2rem;
+}
+
+html > /**/ body .tweet-info {
+    display: inline-block;
+    margin-left: 8%;
+}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {

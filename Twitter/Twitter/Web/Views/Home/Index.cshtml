@@ -1,25 +1,75 @@
 ﻿@using Twitter.Data
+@using System;
 @using Twitter.Data.Models;
 @model IEnumerable<Tweet>
 
-<div class="row">
-    @foreach (var tweet in Model)
-    {
-        @tweet.User.FullName
-        <br>
-        @tweet.Content
-        <br>
-    }
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="home-wrapper">
+    <div class="media" style="padding-bottom: 8% !important">
+        @foreach (var tweet in Model)
+        {          
+            <div class="tweet-wrapper">
+                <div class="media-left media-top">
+                    <a href="#">
+                        <img class="media-object" src="@tweet.User.AvatarUrl" style="width: 4rem; height: 4rem; border-radius: 15%" alt="">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">@tweet.User.FullName @tweet.CreatedAt</h4>
+                    @tweet.Content
+                </div>
+                <div class="tweet-info-wrapper">
+                    <div class="tweet-info">
+                        <a href="#" style="text-decoration: none">
+                            <img class="icon-favourite" src="../../Content/icons/reply-icon.png" alt="Reply" />
+                        </a>
+                    </div>
+                    <div class="tweet-info">
+                        <a href="#" style="text-decoration: none">
+                            <img class="icon-retweet" src="../../Content/icons/retweet-icon.png" alt="Retweet"/>
+                            @tweet.UserRetweets.Count
+                        </a>
+                    </div>
+                    <div class="tweet-info">
+                        <a href="#" style="text-decoration: none">
+                            <img class="icon-favourite" src="../../Content/icons/favourite-icon.png" alt="Favourite"/>
+                            @tweet.Likes.Count
+                        </a>
+                    </div>
+                    <div class="dropdown" style="display: inline-block !important; margin-left: 8%">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 0 6px 0 6px !important">
+                            <img class="icon-more" src="../../Content/icons/more-icon.png" alt="More" />
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+                            <li><a href="#">Share</a></li>
+                            <li><a href="#">Report</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
+    <nav>
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @{
+                var context = new TwitterDbContext();
+                double countTweets = context.Tweets.Count();
+                int pageCount =(int) Math.Ceiling(countTweets/10);
+                for (int i = 1; i <= pageCount; i++)
+                {
+                    int startPage = i - 1;
+                <li><a href="/Home/Index?startPage=@startPage">@i</a></li>
+            }
+            }
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>

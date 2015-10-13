@@ -231,6 +231,7 @@
     </Compile>
     <Compile Include="Models\BindingModels\MessageBindingModel.cs" />
     <Compile Include="Models\BindingModels\NotificationBindingModel.cs" />
+    <Compile Include="Models\BindingModels\PaginationBindingModel.cs" />
     <Compile Include="Models\BindingModels\TweetBindingModel.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
@@ -245,6 +246,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\icons\favourite-icon.png" />
+    <Content Include="Content\icons\more-icon.png" />
+    <Content Include="Content\icons\retweet-icon.png" />
+    <Content Include="Content\icons\reply-icon.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
