@@ -152,7 +152,13 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                string[] username = model.Email.Split('@');
+                var user = new User
+                {
+                    UserName = model.Email,
+                    FullName = model.FullName,
+                    Email = model.Email
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

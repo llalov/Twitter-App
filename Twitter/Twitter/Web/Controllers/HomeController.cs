@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Twitter.Data;
 
 namespace Web.Controllers
 {
-    public class HomeController : Controller
-    {
+    public class HomeController : BaseController
+    {      
         public ActionResult Index()
         {
-            return View();
+            ViewBag.Title = "Home";
+            var tweets = this.Data.Tweets.All()
+                .OrderBy(t => t.CreatedAt);
+
+  
+            return View(tweets);
         }
 
         public ActionResult About()
