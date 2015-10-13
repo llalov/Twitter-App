@@ -309,9 +309,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Twitter.Data.Models\Twitter.Data.Models.csproj">
+    <ProjectReference Include="..\Twitter.Data.Models\Twitter.Models.csproj">
       <Project>{DD430DAB-564A-4348-A679-B7734BB93BDA}</Project>
-      <Name>Twitter.Data.Models</Name>
+      <Name>Twitter.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Twitter.Data\Twitter.Data.csproj">
       <Project>{FC48B862-2314-4D6D-873A-64E8ADFEB854}</Project>

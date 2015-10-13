@@ -75,9 +75,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Twitter.Data.Models\Twitter.Data.Models.csproj">
+    <ProjectReference Include="..\Twitter.Data.Models\Twitter.Models.csproj">
       <Project>{dd430dab-564a-4348-a679-b7734bb93bda}</Project>
-      <Name>Twitter.Data.Models</Name>
+      <Name>Twitter.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

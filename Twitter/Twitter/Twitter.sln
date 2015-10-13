@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{87F4AF05-E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitter.Data", "Twitter.Data\Twitter.Data.csproj", "{FC48B862-2314-4D6D-873A-64E8ADFEB854}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitter.Data.Models", "Twitter.Data.Models\Twitter.Data.Models.csproj", "{DD430DAB-564A-4348-A679-B7734BB93BDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twitter.Models", "Twitter.Data.Models\Twitter.Models.csproj", "{DD430DAB-564A-4348-A679-B7734BB93BDA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{E7CB8FED-2D82-455F-BC4A-00876814BEB4}"
 EndProject
