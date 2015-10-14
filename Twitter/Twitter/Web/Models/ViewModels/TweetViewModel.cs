@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Web.Models.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+namespace Web.Models
 {
-    public class TweetViewModel
+    public class CreateTweetViewModel
     {
-        public int Id { get; set; }
-
+        [Required]
+        [Display(Name = "Compose new Tweet")]
+        [StringLength(140, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         public string Content { get; set; }
-
-        public DateTime? CreatedAt { get; set; }
-
-        public int UserId { get; set; }
     }
-
 }

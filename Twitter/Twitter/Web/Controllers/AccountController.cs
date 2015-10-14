@@ -152,7 +152,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                string[] username = model.Email.Split('@');
+                /*string[] username = model.Email.Split('@');*/
                 var user = new User
                 {
                     UserName = model.Email,

@@ -10,7 +10,10 @@ using Web.Models.BindingModels;
 namespace Web.Controllers
 {
     public class HomeController : BaseController
-    {      
+
+    {
+        
+        [System.Web.Mvc.Authorize]      
         public ActionResult Index([FromUri] PaginationBindingModel model)
         {
             ViewBag.Title = "Home";
@@ -18,9 +21,6 @@ namespace Web.Controllers
                 .OrderByDescending(t => t.CreatedAt)
                 .Skip(model.StartPage * 10)
                 .Take(10);
-
-            var count = this.Data.Tweets.All().Count();
-
 
             return View(tweets);
             
