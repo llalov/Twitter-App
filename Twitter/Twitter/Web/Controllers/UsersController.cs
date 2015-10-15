@@ -6,12 +6,14 @@ using System.Web.Mvc;
 
 namespace Web.Controllers
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         // GET: Users
-        public ActionResult Index()
+        [Authorize]
+        public ActionResult AllUsers()
         {
-            return View();
+            var users = this.Data.Users.All();
+            return View(users);
         }
     }
 }

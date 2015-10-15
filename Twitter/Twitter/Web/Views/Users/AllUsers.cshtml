@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNet.Identity
+@using Twitter.Data.Models;
+@model IQueryable<User>
+<div>
+    @{
+        for (int i = 1; i <= Model.Count(); i++)
+        {
+            var loggedUserId = User.Identity.GetUserId();
+            var user = Model.OrderBy(m => m.FullName).Skip(i - 1).FirstOrDefault();
+            if (i + 3 % 4 == 0)
+            {
+                @:<div class="row">
+            }
+            if (user.Id != loggedUserId)
+            {
+                <div class="col-md-4">
+                    <div class="tweet-wrapper">
+                        <div class="media-left media-top">
+                            <a href="#">
+                                <img class="media-object" src="@user.AvatarUrl" style="width: 4rem; height: 4rem; border-radius: 15%" alt="">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">@user.FullName</h4>
+                            <button type="button" class="btn btn-default" aria-label="Right Align" style="float: right">
+                                <span>Follow</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                if (i + 3 % 4 == 2)
+                {
+                    @:</div>
+                }
+            }
+        }
+    }
+</div>

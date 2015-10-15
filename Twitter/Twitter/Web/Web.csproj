@@ -312,11 +312,11 @@
     <Content Include="Views\Shared\_TweetPartial.cshtml" />
     <Content Include="Views\Shared\_ProfilePartial.cshtml" />
     <Content Include="Views\Tweets\CreateTweet.cshtml" />
+    <Content Include="Views\Users\AllUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Test\" />
-    <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
