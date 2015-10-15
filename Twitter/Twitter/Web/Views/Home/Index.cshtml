@@ -4,50 +4,7 @@
 @model IEnumerable<Tweet>
 
 <div class="home-wrapper">
-    <div class="media" style="padding-bottom: 8% !important">
-        @foreach (var tweet in Model)
-        {          
-            <div class="tweet-wrapper">
-                <div class="media-left media-top">
-                    <a href="#">
-                        <img class="media-object" src="@tweet.User.AvatarUrl" style="width: 4rem; height: 4rem; border-radius: 15%" alt="">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">@tweet.User.FullName @tweet.CreatedAt</h4>
-                    @tweet.Content
-                </div>
-                <div class="tweet-info-wrapper">
-                    <div class="tweet-info">
-                        <a href="#" style="text-decoration: none">
-                            <img class="icon-favourite" src="../../Content/icons/reply-icon.png" alt="Reply" />
-                        </a>
-                    </div>
-                    <div class="tweet-info">
-                        <a href="#" style="text-decoration: none">
-                            <img class="icon-retweet" src="../../Content/icons/retweet-icon.png" alt="Retweet"/>
-                            @tweet.UserRetweets.Count
-                        </a>
-                    </div>
-                    <div class="tweet-info">
-                        <a href="#" style="text-decoration: none">
-                            <img class="icon-favourite" src="../../Content/icons/favourite-icon.png" alt="Favourite"/>
-                            @tweet.Likes.Count
-                        </a>
-                    </div>
-                    <div class="dropdown" style="display: inline-block !important; margin-left: 8%">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 0 6px 0 6px !important">
-                            <img class="icon-more" src="../../Content/icons/more-icon.png" alt="More" />
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
-                            <li><a href="#">Share</a></li>
-                            <li><a href="#">Report</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
+    @Html.Partial("_AllTweetsPartial")
     <nav>
         <ul class="pagination">
             <li>

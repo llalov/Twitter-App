@@ -4,7 +4,7 @@
 }
 html > /**/ body .home-wrapper {
     margin: auto;
-    width: 60%;
+    width: 50%;
 }
 html > /**/ body .tweet-wrapper {
     border: 1px solid #ABD0BC;
@@ -30,6 +30,17 @@ html > /**/ body .icon-more {
 html > /**/ body .tweet-info {
     display: inline-block;
     margin-left: 8%;
+}
+
+html > /**/ body .head-profile {
+    height: 20%;
+    margin: 1rem;    
+}
+
+html > /**/ body .user-info {
+    width: 76.08%;
+    float: right;
+    margin-top: 17rem;    
 }
 
 
