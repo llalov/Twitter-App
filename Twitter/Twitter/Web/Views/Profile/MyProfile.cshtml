@@ -8,7 +8,7 @@
                 <img src="http://www.kartinkioboi.ru/_ph/19/182240145.jpg" alt="" style="width: 100%; height: 25rem"  />
             </div>
         <div class="user-info">
-            <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem" >
+            <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
                 TWEETS <br> @Model.Count()
             </div>
             <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
@@ -20,6 +20,9 @@
             <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
                 FAVOURITES <br> @Model.FirstOrDefault().FavouritesCount
             </div>
+            <ul class="nav navbar-nav" style="float: right; " >
+                <li style="border: 1px solid black;">@Html.ActionLink("Edit Profile", "EditMyProfile", "Profile")</li>
+            </ul>  
         </div>
         <div style="margin-left: 2rem">
             <a href="#">
@@ -33,7 +36,6 @@
 </div>
 <div class="home-wrapper">
     @Html.Partial("_OwnTweetsPartial")
-</div>
 </div>
 
 
