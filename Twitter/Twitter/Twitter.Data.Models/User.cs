@@ -16,7 +16,9 @@ namespace Twitter.Data.Models
         private ICollection<User> followingUsers;
         private ICollection<Message> sentMessages;
         private ICollection<Message> receivedMessages;
-        private ICollection<Notification> notifications; 
+        private ICollection<Notification> receivedNotifications;
+        private ICollection<Notification> involvedNotifications; 
+
 
         public User()
         {
@@ -27,7 +29,8 @@ namespace Twitter.Data.Models
             this.followingUsers = new HashSet<User>();
             this.sentMessages = new HashSet<Message>();
             this.receivedMessages = new HashSet<Message>();
-            this.notifications = new HashSet<Notification>();
+            this.receivedNotifications = new HashSet<Notification>();
+            this.involvedNotifications = new HashSet<Notification>();
         } 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
@@ -88,10 +91,16 @@ namespace Twitter.Data.Models
             set { this.receivedMessages = value; }
         }
 
-        public virtual ICollection<Notification> Notifications
+        public virtual ICollection<Notification> ReceivedNotifications
         {
-            get { return this.notifications; }
-            set { this.notifications = value; }
+            get { return this.receivedNotifications; }
+            set { this.receivedNotifications = value; }
         }
+
+        public virtual ICollection<Notification> InvolvedNotifications
+        {
+            get { return this.involvedNotifications; }
+            set { this.involvedNotifications = value; }
+        } 
     }
 }
