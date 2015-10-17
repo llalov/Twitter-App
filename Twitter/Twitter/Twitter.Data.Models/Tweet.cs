@@ -9,22 +9,27 @@ namespace Twitter.Data.Models
     {
 
         private ICollection<User> likes;
-        private ICollection<User> userRetweets;
+        private ICollection<User> retweets;
 
         public Tweet()
         {
             this.likes = new HashSet<User>();
-            this.userRetweets = new HashSet<User>();
+            this.retweets = new HashSet<User>();
         }
 
         
 
         public int Id { get; set; }
+
+        [MinLength(1)]
+        [MaxLength(140)]
         public string Content { get; set; }
+
         public DateTime CreatedAt { get; set; }
 
-      
+        [ForeignKey("User")]
         public string UserId { get; set; }
+
         public virtual User User { get; set; }  
 
         public virtual ICollection<User> Likes
@@ -33,10 +38,10 @@ namespace Twitter.Data.Models
             set { this.likes = value; }
         }
 
-        public virtual ICollection<User> UserRetweets
+        public virtual ICollection<User> Retweets
         {
-            get { return this.userRetweets; }
-            set { this.userRetweets = value; }
+            get { return this.retweets; }
+            set { this.retweets = value; }
         }
          
     }

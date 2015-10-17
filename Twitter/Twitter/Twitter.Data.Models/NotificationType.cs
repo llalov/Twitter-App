@@ -1,12 +1,9 @@
-﻿using System;
-
-
-namespace Twitter.Data.Models
+﻿namespace Twitter.Data.Models
 {
     public enum NotificationType
     {
         Retweet,
-        FavouriteTweet,
-        NewFollower
+        Like,
+        Follow
     }
 }
