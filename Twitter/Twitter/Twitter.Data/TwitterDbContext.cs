@@ -58,6 +58,16 @@ namespace Twitter.Data
                 .WithRequired(m => m.Sender)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<User>()
+               .HasMany(u => u.InvolvedNotifications)
+               .WithRequired(m => m.Sender)
+               .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.ReceivedNotifications)
+                .WithRequired(m => m.Receiver)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Tweet>()
                 .HasRequired(t => t.User)
                 .WithMany(t => t.OwnTweets)
@@ -75,8 +85,9 @@ namespace Twitter.Data
                     m.MapRightKey("UserId");
                     m.ToTable("FavouriteTweets");
                 });
+
             modelBuilder.Entity<Tweet>()
-                .HasMany(t => t.UserRetweets)
+                .HasMany(t => t.Retweets)
                 .WithMany(t => t.Retweets)
                 .Map(m =>
                 {
