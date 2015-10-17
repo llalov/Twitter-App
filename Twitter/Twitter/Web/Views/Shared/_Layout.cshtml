@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -22,11 +21,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Notifications", "About", "Home")</li>
-                    <li>@Html.ActionLink("Messages", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("New Tweet", "CreateTweet", "Tweets")</li>
-                    <li>@Html.ActionLink("Users", "AllUsers", "Users")</li>
                     <li>@Html.ActionLink("My Profile", "MyProfile", "Profile")</li>
+                    <li>@Html.ActionLink("Users", "AllUsers", "Users")</li>
+                    <li>@Html.ActionLink("Messages", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Notifications", "AllNotfications", "Notifications")</li>
+                    <li>@Html.ActionLink("New Tweet", "CreateTweet", "Tweets")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -39,7 +38,6 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

@@ -7,11 +7,6 @@
     @Html.Partial("_AllTweetsPartial")
     <nav>
         <ul class="pagination">
-            <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
             @{
                 var context = new TwitterDbContext();
                 double countTweets = context.Tweets.Count();
@@ -22,11 +17,6 @@
                 <li><a href="/Home/Index?startPage=@startPage">@i</a></li>
             }
             }
-            <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
         </ul>
     </nav>
 </div>

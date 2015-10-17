@@ -14,15 +14,15 @@ namespace Web.Models.ViewModels
 
         public string UserAvatarUrl { get; set; }
 
-        public int LikesCount { get; set; }
+        public int? LikesCount { get; set; }
 
-        public int RetweetsCount { get; set; }
+        public int? RetweetsCount { get; set; }
 
-        public int FollowersCount { get; set; }
+        public int? FollowersCount { get; set; }
 
-        public int FollowingCount { get; set; }
+        public int? FollowingCount { get; set; }
 
-        public int FavouritesCount { get; set; }
+        public int? FavouritesCount { get; set; }
 
         public static Expression<Func<Tweet, UserTweetViewModel>> Create
         {
@@ -35,7 +35,7 @@ namespace Web.Models.ViewModels
                     UserFullName = tweet.User.FullName,
                     UserAvatarUrl = tweet.User.AvatarUrl,
                     LikesCount = tweet.Likes.Count,
-                    RetweetsCount = tweet.UserRetweets.Count,
+                    RetweetsCount = tweet.Retweets.Count,
                     FollowersCount = tweet.User.FollowersUsers.Count,
                     FollowingCount = tweet.User.FollowingUsers.Count,
                     FavouritesCount = tweet.User.FavouriteTweets.Count
