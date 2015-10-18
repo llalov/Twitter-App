@@ -24,7 +24,11 @@
                     <li>@Html.ActionLink("My Profile", "MyProfile", "Profile")</li>
                     <li>@Html.ActionLink("Users", "AllUsers", "Users")</li>
                     <li>@Html.ActionLink("Messages", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Notifications", "AllNotfications", "Notifications")</li>
+                    <li>
+                        <a href="@Url.Action("AllNotfications", "Notifications")">
+                            Notifications <span class="badge"> 0</span> 
+                        </a>
+                    </li>
                     <li>@Html.ActionLink("New Tweet", "CreateTweet", "Tweets")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
