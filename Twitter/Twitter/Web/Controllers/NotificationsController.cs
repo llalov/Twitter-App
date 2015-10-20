@@ -10,7 +10,7 @@ namespace Web.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult AllNotfications()
+        public ActionResult AllNotifications()
         {
             var loggedUserId = User.Identity.GetUserId();
             var user = Data.Users.Find(loggedUserId);
