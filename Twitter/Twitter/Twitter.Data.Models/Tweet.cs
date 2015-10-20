@@ -18,15 +18,17 @@ namespace Twitter.Data.Models
         }
 
         
-
+        [Key]
         public int Id { get; set; }
 
         [MinLength(1)]
         [MaxLength(140)]
         public string Content { get; set; }
 
+        [Required]
         public DateTime CreatedAt { get; set; }
 
+        [Required]
         [ForeignKey("User")]
         public string UserId { get; set; }
 

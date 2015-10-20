@@ -7,6 +7,7 @@ namespace Twitter.Data.Models
 {
     public class Notification
     {
+        [Key]
         public int Id { get; set; }
 
         public NotificationType Type { get; set; }
@@ -23,6 +24,7 @@ namespace Twitter.Data.Models
         [JsonIgnore]
         public virtual User Receiver { get; set; }
         
+        [Required]
         public DateTime CreatedAt { get; set; }
 
     }

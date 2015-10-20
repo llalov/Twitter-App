@@ -43,11 +43,17 @@ namespace Twitter.Data.Models
 
        
         public string AvatarUrl { get; set; }
+
         public string FullName { get; set; }
+
         public string Biography { get; set; }
+
         public string Location { get; set; }
+
         public string Website { get; set; }
+
         public DateTime? BirthDay { get; set; }
+
 
         public virtual ICollection<Tweet> OwnTweets
         {
