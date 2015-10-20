@@ -320,9 +320,11 @@
     <Content Include="Views\Shared\_OwnTweetsPartial.cshtml" />
     <Content Include="Views\Profile\EditMyProfile.cshtml" />
     <Content Include="Views\Notifications\AllNotfications.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
