@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Web.Models.BindingModels;
 using Web.Models.ViewModels;
 
 namespace Web.Controllers
@@ -15,7 +16,7 @@ namespace Web.Controllers
             var tweets = user.OwnTweets
                 .OrderByDescending(t => t.CreatedAt)
                 .AsQueryable()
-                .Select(UserTweetViewModel.Create);
+                .Select(TweetViewModel.Create);
             return View(tweets);
         }
 
@@ -28,7 +29,7 @@ namespace Web.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult EditMyProfile(EditMyProfileViewModel model)
+        public ActionResult EditMyProfile(ProfileBindingModel model)
         {
             var loggedUserId = User.Identity.GetUserId();
             var profile = Data.Users.Find(loggedUserId);

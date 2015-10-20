@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Twitter.Data;
 using Twitter.Data.Models;
 using Web.Models;
+using Web.Models.BindingModels;
 using Web.Models.ViewModels;
 
 namespace Web.Controllers
@@ -22,7 +23,7 @@ namespace Web.Controllers
         [System.Web.Mvc.HttpPost]
         [System.Web.Mvc.Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateTweet(CreateTweetViewModel model)
+        public ActionResult CreateTweet(TweetBindingModel model)
         {
             
             if (ModelState.IsValid)
