@@ -323,10 +323,11 @@
     <Content Include="Views\Shared\DisplayTemplates\TweetViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\NotificationViewModel.cshtml" />
     <Content Include="Views\Shared\_OwnTweetsPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TweetBindingModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProfileBindingModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
