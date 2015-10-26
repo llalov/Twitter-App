@@ -1,26 +1,39 @@
-﻿@model Web.Models.ViewModels.NotificationViewModel
+﻿@using Microsoft.AspNet.Identity
+@model Web.Models.ViewModels.NotificationViewModel
 
-<div class="tweet-wrapper">
-    <div class="media-left media-top">
-        <a href="#">
-            <img class="media-object" src="@Model.SenderAvatarUrl" style="width: 4rem; height: 4rem; border-radius: 15%" alt="">
-        </a>
+@if (@Model.SenderId != User.Identity.GetUserId())
+{
+    <div class="tweet-wrapper">
+        <div class="media-left media-top">
+            <a href="#">
+                <img class="media-object" src="@Model.SenderAvatarUrl" style="width: 4rem; height: 4rem; border-radius: 15%" alt="">
+            </a>
+        </div>
+        <div class="media-body">
+            @switch (@Model.Type.ToString())
+            {
+                case "Retweet":
+                    <h5 class="media-heading"><b>@Model.SenderFullName</b> has retweeted your tweet</h5>
+                    @Html.DisplayFor(m => m.CreatedAt)
+                    break;
+                case "Like":
+                    <h5 class="media-heading"><b>@Model.SenderFullName</b> has liked your tweet</h5>
+                    @Html.DisplayFor(m => m.CreatedAt)
+                    break;
+                case "Follow":
+                    <h5 class="media-heading"><b>@Model.SenderFullName</b> has followed you</h5>
+                    @Html.DisplayFor(m => m.CreatedAt)
+                    break;
+            }
+            <div style="display: inline-block; float: right">
+                @if (@Model.Seen == false)
+                {
+                    <a href="../Notifications/MarkAsRead?notificationId=@Model.Id" style="text-decoration: none">
+                        <span class="btn btn-default">Mark as read</span>
+
+                    </a>
+                }
+            </div>
+        </div>
     </div>
-    <div class="media-body">
-        @switch (@Model.Type.ToString())
-        {
-            case "Retweet":
-                <h5 class="media-heading"><b>@Model.SenderFullName</b> has retweeted your tweet</h5>
-                        <div>@Html.DisplayFor(m => m.CreatedAt)</div>
-                break;
-            case "Like":
-                <h5 class="media-heading"><b>@Model.SenderFullName</b> has liked your tweet</h5>
-                        <div>@Html.DisplayFor(m => m.CreatedAt)</div>
-                break;
-            case "Follow":
-                <h5 class="media-heading"><b>@Model.SenderFullName</b> has followed you</h5>
-                        <div>@Html.DisplayFor(m => m.CreatedAt)</div>
-                break;
-        }
-    </div>
-</div>
+}

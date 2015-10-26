@@ -51,15 +51,17 @@ namespace Web.Controllers
             var loggedUserId = User.Identity.GetUserId();
             var user = Data.Users.Find(loggedUserId);
             var favoutireTweet = Data.Tweets.Find(tweetId);
-            var notification = new Notification()
+            var notification = new Twitter.Data.Models.Notification()
             {
-                Type = NotificationType.Like,
                 CreatedAt = DateTime.Now,
+                ReceiverId = favoutireTweet.UserId,
                 SenderId = loggedUserId,
-                ReceiverId = favoutireTweet.UserId
-            };
+                Type = NotificationType.Like,
+                Seen = false
 
-            user.ReceivedNotifications.Add(notification);
+            };
+           
+            Data.Notifications.Add(notification);
             user.FavouriteTweets.Add(favoutireTweet);
             Data.SaveChanges();
 

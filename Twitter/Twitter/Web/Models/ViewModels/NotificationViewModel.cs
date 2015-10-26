@@ -7,6 +7,8 @@ namespace Web.Models.ViewModels
 {
     public class NotificationViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         public NotificationType Type { get; set; }
 
@@ -25,18 +27,23 @@ namespace Web.Models.ViewModels
         [Required]
         public string SenderAvatarUrl { get; set; }
 
+        [Required]
+        public bool Seen { get; set; }
+
         public static Expression<Func<Notification, NotificationViewModel>> Create
         {
             get
             {
                 return notification => new NotificationViewModel()
                 {
+                    Id = notification.Id,
                     Type = notification.Type,
                     SenderId = notification.SenderId,
                     ReceiverId = notification.ReceiverId,
                     CreatedAt = notification.CreatedAt,
                     SenderFullName = notification.Sender.FullName,
-                    SenderAvatarUrl = notification.Sender.AvatarUrl
+                    SenderAvatarUrl = notification.Sender.AvatarUrl,
+                    Seen = notification.Seen
                 };
             }
         }

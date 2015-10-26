@@ -24,13 +24,21 @@ namespace Web.Controllers
             return View(notifications);
         }
 
-        /*[HttpGet]
+        [HttpGet]
         [Authorize]
-        public ActionResult UnreadNotifications()
+        public ActionResult GetUnread()
         {
-            // TO DO (first a column wiht name "seen" needs to be added in the notifications table so 
-            that and depending on if the notification is not seen it will render 
-            in the view for this action)    
-        }*/
+            var loggedUserId = User.Identity.GetUserId();
+            var count = Data.Notifications.All().Count(n => n.ReceiverId == loggedUserId && n.Seen == false && n.SenderId != loggedUserId);
+            return PartialView(count);
+        }
+
+        public ActionResult MarkAsRead(int notificationId)
+        {
+            var notification = Data.Notifications.Find(notificationId);
+            notification.Seen = true;
+            Data.SaveChanges();
+            return RedirectToAction("AllNotifications");
+        }
     }
 }

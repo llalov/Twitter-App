@@ -325,6 +325,7 @@
     <Content Include="Views\Shared\EditorTemplates\TweetBindingModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ProfileBindingModel.cshtml" />
     <Content Include="Views\Notifications\AllNotifications.cshtml" />
+    <Content Include="Views\Notifications\GetUnread.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

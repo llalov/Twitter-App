@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -24,11 +25,15 @@
                     <li>@Html.ActionLink("My Profile", "MyProfile", "Profile")</li>
                     <li>@Html.ActionLink("Users", "AllUsers", "Users")</li>
                     <li>@Html.ActionLink("Messages", "Contact", "Home")</li>
-                    <li>
-                        <a href="@Url.Action("AllNotifications", "Notifications")">
-                            Notifications <span class="badge"> 0</span> 
-                        </a>
-                    </li>
+                    @if (User.Identity.GetUserId() != null)
+                    {
+                        <li>
+                            <a href="@Url.Action("AllNotifications", "Notifications")">
+                                Notifications @{ Html.RenderAction("GetUnread", "Notifications");}
+                            </a>
+                        </li>
+                     }
+                    
                     <li>@Html.ActionLink("New Tweet", "CreateTweet", "Tweets")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
