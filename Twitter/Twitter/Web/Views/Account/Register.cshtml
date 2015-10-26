@@ -3,6 +3,14 @@
     ViewBag.Title = "Register";
 }
 
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryunobtrusive")
+    
+}
+
+
+
+
 <h2>@ViewBag.Title.</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -20,7 +28,8 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @id = "search-text" })
+            <span id="words"></span>
         </div>
     </div>
     <div class="form-group">
@@ -42,6 +51,25 @@
     </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+<script>
+    $("#search-text").keyup(function (e) {
+        var searchQuery = $("#search-text").val();
+        $.getJSON("/Account/Search", {
+            query: searchQuery
+        }, function (check) {
+            if (searchQuery) {
+                alert(searchQuery);
+                /* if (!check) {
+                    var resultExists = $('<span class="display-inline-block success-validate">').text("Email '" + searchQuery + "' is available.");
+                    $("#words").html("");
+                    resultExists.appendTo($("#words"));
+                } else {
+                    var result = $('<span class="unsuccess-validate">').text("Email '" + searchQuery + "' is taken!");
+                    $("#words").html("");
+                    result.appendTo($("#words"));
+                }*/
+            }
+        });
+    });
+</script>

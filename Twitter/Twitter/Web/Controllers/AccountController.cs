@@ -14,7 +14,7 @@ using Web.Models;
 namespace Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -27,6 +27,15 @@ namespace Web.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+        }
+
+        [AllowAnonymous]
+        public ActionResult Search(string query)
+        {
+
+            var result = Data.Users.All().Any(r => r.Email == query);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ApplicationSignInManager SignInManager
@@ -488,5 +497,7 @@ namespace Web.Controllers
             }
         }
         #endregion
+
+        
     }
 }
