@@ -43,6 +43,36 @@ html > /**/ body .user-info {
     margin-top: 17rem;    
 }
 
+.display-inline-block {
+    display: inline-block;   
+}
+
+#confirmEmail {
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.username-textbox {
+    display: inline-block;
+}
+
+.unsuccess-validate {
+    color: #fcf8e3;
+    background: #E43A3A;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.success-validate {
+    color: #fcf8e3;
+    background: #77D66C;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+#email {
+    display: inline-block;
+}
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
