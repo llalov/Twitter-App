@@ -23,7 +23,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("My Profile", "MyProfile", "Profile")</li>
-                    <li>@Html.ActionLink("Users", "AllUsers", "Users")</li>
+                    <li>@Html.ActionLink("Users", "Index", "Users")</li>
                     <li>@Html.ActionLink("Messages", "Contact", "Home")</li>
                     @if (User.Identity.GetUserId() != null)
                     {
