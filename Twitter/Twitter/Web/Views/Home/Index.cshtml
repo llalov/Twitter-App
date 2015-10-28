@@ -1,22 +1,42 @@
 ﻿@using Twitter.Data
 @using System;
+@using Microsoft.AspNet.Identity
 @using Twitter.Data.Models;
 @model IEnumerable<Tweet>
-
+<div id="hubTweets"></div>
 <div class="home-wrapper">
-    @Html.Partial("_AllTweetsPartial")
-    <nav>
-        <ul class="pagination">
-            @{
-                var context = new TwitterDbContext();
-                double countTweets = context.Tweets.Count();
-                int pageCount =(int) Math.Ceiling(countTweets/10);
-                for (int i = 1; i <= pageCount; i++)
-                {
-                    int startPage = i - 1;
-                <li><a href="/Home/Index?startPage=@startPage">@i</a></li>
-            }
-            }
-        </ul>
-    </nav>
+    <div id="">
+        @Html.Partial("_AllTweetsPartial")
+        <nav>
+            <ul class="pagination">
+                @{
+                    var context = new TwitterDbContext();
+                    double countTweets = context.Tweets.Count();
+                    int pageCount = (int)Math.Ceiling(countTweets / 10);
+                    for (int i = 1; i <= pageCount; i++)
+                    {
+                        int startPage = i - 1;
+                        <li><a href="/Home/Index?startPage=@startPage">@i</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
 </div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryunobtrusive")
+    <script>
+        $(document).ready(function() {
+
+            var tweetsHub = $.connection.tweets;
+
+            tweetsHub.client.newTweet = function (content, avatarUrl, fullName, createdAt, tweetId, likesCount, retweetsCount) {
+
+                var element = "<div class=\"home-wrapper\"><div class=\"tweet-wrapper\"><div class=\"media-left media-top\"><a href=\"#\"><img class=\"media-object\" src=\"" + avatarUrl + "\" style=\"width: 4rem; height: 4rem; border-radius: 15%\" alt=\"\"></a></div><div class=\"media-body\"><h4 class=\"media-heading\">" + fullName + "<div style=\"display: inline-block; font-size: 1.2rem\">"+createdAt+"</div></h4>" + content + "</div><div class=\"tweet-info-wrapper\"><div class=\"tweet-info\"><a href=\"#\" style=\"text-decoration: none\"><img class=\"icon-favourite\" src=\"../../Content/icons/reply-icon.png\" alt=\"Reply\" /></a></div><div class=\"tweet-info\"><a href=\"#\" style=\"text-decoration: none\"><img class=\"icon-retweet\" src=\"../../Content/icons/retweet-icon.png\" alt=\"Retweet\" />"+retweetsCount+"</a></div><div class=\"tweet-info\"><a href=\"../Tweets/AddTweetToFavourites?tweetId="+tweetId+"\" style=\"text-decoration: none\"><img class=\"icon-favourite\" src=\"../../Content/icons/favourite-icon.png\" alt=\"Favourite\" />"+likesCount+"</a></div><div class=\"dropdown\" style=\"display: inline-block !important; margin-left: 8%\"><button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"true\" style=\"padding: 0 6px 0 6px !important\"><img class=\"icon-more\" src=\"../../Content/icons/more-icon.png\" alt=\"More\" /></button><ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\"><li><a href=\"#\">Share</a></li><li><a href=\"#\">Report</a></li></ul></div></div></div></div>";
+                $("#hubTweets").prepend(element);
+            };
+             $.connection.hub.start();
+        });
+    </script>
+}
