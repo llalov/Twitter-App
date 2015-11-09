@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Web.Extensions;
 using Web.Models.BindingModels;
 using Web.Models.ViewModels;
 
@@ -60,6 +61,7 @@ namespace Web.Controllers
             }            
 
             this.Data.SaveChanges();
+            this.AddNotification("Profile updated!", NotificationType.SUCCESS);
 
             return RedirectToAction("MyProfile", "Profile");
         }

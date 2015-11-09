@@ -8,10 +8,13 @@ html > /**/ body .home-wrapper {
 }
 html > /**/ body .tweet-wrapper {
     border: 1px solid #ABD0BC;
-    border-radius: 0;
+    border-radius: 10px;
+    background-color: #E6F1F6;
     padding: 1rem;
-    margin: 0.2rem;
+    margin-top: 1rem;
+
 }
+
 html > /**/ body .icon-retweet {
     width: 2rem;
     height: 1rem;
@@ -20,6 +23,11 @@ html > /**/ body .icon-retweet {
 html > /**/ body .icon-favourite {
     width: 1.5rem;
     height: 1.5rem;
+}
+.tweet-content {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    width: 49rem;
 }
 
 html > /**/ body .icon-more {
@@ -41,6 +49,10 @@ html > /**/ body .user-info {
     width: 76.08%;
     float: right;
     margin-top: 17rem;    
+}
+
+.alert {
+    margin-top: 10px;
 }
 
 .display-inline-block {

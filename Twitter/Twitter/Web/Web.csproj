@@ -234,6 +234,7 @@
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TweetsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Extensions\NotificationExtensions.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -338,6 +339,7 @@
     <Content Include="Views\Shared\EditorTemplates\ProfileBindingModel.cshtml" />
     <Content Include="Views\Notifications\AllNotifications.cshtml" />
     <Content Include="Views\Notifications\GetUnread.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,41 +1,40 @@
-﻿@using Microsoft.AspNet.Identity
-@using Twitter.Data.Models;
-@model IQueryable<Web.Models.ViewModels.TweetViewModel>
+﻿@model IQueryable<Web.Models.ViewModels.TweetViewModel>
 
-<div class="profile-page-wrapper">
-    <div class="head-profile">
+    <div class="profile-page-wrapper">
+        <div class="head-profile">
             <div class="profile-background" style="height: 12rem">
-                <img src="http://www.kartinkioboi.ru/_ph/19/182240145.jpg" alt="" style="width: 100%; height: 25rem"  />
+                <img src="http://www.kartinkioboi.ru/_ph/19/182240145.jpg" alt="" style="width: 100%; height: 25rem" />
             </div>
-        <div class="user-info">
-            <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
-                TWEETS <br> @Model.Count()
+            <div class="user-info">
+                <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
+                    TWEETS <br> @Model.Count()
+                </div>
+                <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
+                    @*IF YOU ARE GETTING THIS ERROR PLEASE ADD FIRST A NEW TWEET FROM "New Tweet" MENU*@
+                    FOLLOWING <br> @Model.FirstOrDefault().FollowingCount
+                </div>
+                <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
+                    FOLLOWERS<br> @Model.FirstOrDefault().FollowersCount
+                </div>
+                <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
+                    FAVOURITES<br> @Model.FirstOrDefault().FavouritesCount
+                </div>
+                <ul class="nav navbar-nav" style="float: right; ">
+                    <li style="border: 1px solid black;">@Html.ActionLink("Edit Profile", "EditMyProfile", "Profile")</li>
+                </ul>
             </div>
-            <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
-                FOLLOWING <br> @Model.FirstOrDefault().FollowingCount
+            <div style="margin-left: 2rem">
+                <a href="#">
+                    <img class="media-object" src=" @Model.FirstOrDefault().UserAvatarUrl" style="width: 20rem; height: 20rem; border-radius: 15%; border: 5px solid white" alt="">
+                </a>
             </div>
-            <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
-                FOLLOWERS<br> @Model.FirstOrDefault().FollowersCount
+            <div style="margin-left: 3.5rem">
+                <h3>@Model.FirstOrDefault().UserFullName</h3>
             </div>
-            <div style="display: inline-block; margin: 0 1.5rem 0 1.5rem">
-                FAVOURITES<br> @Model.FirstOrDefault().FavouritesCount
-            </div>
-            <ul class="nav navbar-nav" style="float: right; " >
-                <li style="border: 1px solid black;">@Html.ActionLink("Edit Profile", "EditMyProfile", "Profile")</li>
-            </ul>  
-        </div>
-        <div style="margin-left: 2rem">
-            <a href="#">
-                <img class="media-object" src=" @Model.FirstOrDefault().UserAvatarUrl" style="width: 20rem; height: 20rem; border-radius: 15%; border: 5px solid white" alt="">
-            </a>
-        </div>
-        <div style="margin-left: 3.5rem">
-            <h3>@Model.FirstOrDefault().UserFullName</h3>
         </div>
     </div>
-</div>
-<div class="home-wrapper">
-    @Html.Partial("_OwnTweetsPartial")
-</div>
+    <div class="home-wrapper">
+        @Html.Partial("_OwnTweetsPartial")
+    </div>
 
 
