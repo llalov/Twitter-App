@@ -2,7 +2,6 @@
 
 STEPS TO CREATE BASE OF WEB-APP:
 
-I.
 1. Create a new new Blank Solution project 
 2. Add folders Common, Data, External Libraries, Web
 3. In web folder add new ASP.NET Web Application with name (projName.Web) -> MVC
@@ -24,13 +23,12 @@ I.
 12. Web->Models->AccountViewModels-> edit LoginViewModel, RegisterViewModel 
 13. In AccountController -> Login-> change model.email with model.UserName; Register-> change UserName = model.email (UserName)
 	14. Web->Views->Account->Login.cshtml -> change to log with username not email; Register.cshtml-> add one more input field like email, for username.
-II.
-1. Create Models
-2. Open Package Manager Console, in projName.Data (where ApplicationDbContext.cs is) and type: 'Enable-Migrations -EnableAutomaticMigrations'
-3. ApplicationDbContext.cs-> 'Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());'
-4. Package Manager Console-> update-database
-5. ApplicationDbContext.cs->Add 'public IDbSet<Model> Models {get; set;}' for all Models
-6. ApplicationDbContext.cs-> 
+14. Create Models
+15. Open Package Manager Console, in projName.Data (where ApplicationDbContext.cs is) and type: 'Enable-Migrations -EnableAutomaticMigrations'
+16. ApplicationDbContext.cs-> 'Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());'
+17. Package Manager Console-> update-database
+18. ApplicationDbContext.cs->Add 'public IDbSet<Model> Models {get; set;}' for all Models
+19. ApplicationDbContext.cs-> 
 	(example)
 		'protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -41,22 +39,22 @@ II.
 			
 			base.OnModelCreating(modelBuilder);
 		}'
-7. projName.Data-> create: IApplicationDbContext.cs, IprojNameData.cs, projNameData.cs; Create 'Repositories' folder->IRepository.cs and GenericRepository.cs.
-8. Delete Web->Models->IdentityModels.cs	
-9. Create Web->Controllers->BaseController.cs and make all controllers inherit it;
-10. Web-> Install 'Ninject.MVC5' package
-11. Web->App_Start->NinjectWebCommon.cs-> in 'RegisterServices' method add: 
+20. projName.Data-> create: IApplicationDbContext.cs, IprojNameData.cs, projNameData.cs; Create 'Repositories' folder->IRepository.cs and GenericRepository.cs.
+21. Delete Web->Models->IdentityModels.cs	
+22. Create Web->Controllers->BaseController.cs and make all controllers inherit it;
+23. Web-> Install 'Ninject.MVC5' package
+24. Web->App_Start->NinjectWebCommon.cs-> in 'RegisterServices' method add: 
 	kernel.Bind<IprojNameData>().To<projNameData>();
 kernel.Bind<IApplicationDbContext>().To<ApplicationDbContext>();
-12. If you want to remove the 'Web Forms View Engine' for better performance:
+25. If you want to remove the 'Web Forms View Engine' for better performance:
 	-Web->App_Start-> create class "ViewEnginesConfig.cs", clear all view engines and add only razor(or any other that you want to use)
 	-Web->Global.asax.cs->ApplicationStart()-> add: 'ViewEnginesConfig.RegisterViewEngines(ViewEngines.Engines);'
-13. Web-> Install packages: 'Glimpse.Mvc5' and 'Glimpse.EF6', open localhost:****/glimpse.axd and enable glimpse
-14. Web-> Install package: Microsoft.jQuery.Unobtrusive.Ajax; Web->App_Start-> add this code: 
+26. Web-> Install packages: 'Glimpse.Mvc5' and 'Glimpse.EF6', open localhost:****/glimpse.axd and enable glimpse
+27. Web-> Install package: Microsoft.jQuery.Unobtrusive.Ajax; Web->App_Start-> add this code: 
 			"bundles.Add(new ScriptBundle("~/bundles/ajax").Include(
                 "~/Scripts/jquery.unobtrusive-ajax.min.js"));"
 		Include the unobtrusive AJAX script in the view which needs AJAX: "@section scripts {@Scripts.Render("~/bundles/ajax")}"
-15. Notifications system: Web-> Install: "BootstrapNotifications"; Views->Shared->_Layout.cshtml : add before "@RenderBody()": "@Html.Partial("_Notifications")"
+28. Notifications system: Web-> Install: "BootstrapNotifications"; Views->Shared->_Layout.cshtml : add before "@RenderBody()": "@Html.Partial("_Notifications")"
 	- when is successfull before redirect action place: "this.AddNotification("User registered", NotificationType.INFO);"
 	-\Content\Site.css -> .alert {margin-top: 10px;}
 	
