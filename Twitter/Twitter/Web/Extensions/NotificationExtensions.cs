@@ -45,6 +45,11 @@ namespace Web.Extensions
             return htmlHelper.ViewContext.Controller.TempData[NotificationKey] as ICollection<String> ?? null;
         }
 
+        internal static void AddNotification()
+        {
+            throw new NotImplementedException();
+        }
+
         private static string getNotificationKeyByType(string notificationType)
         {
             try

@@ -6,6 +6,9 @@ using Microsoft.AspNet.SignalR;
 using Twitter.Data.Models;
 using Web.Hubs;
 using Web.Models.BindingModels;
+using Web.Extensions;
+using NotificationType = Web.Extensions.NotificationType;
+
 namespace Web.Controllers
 {
     public class TweetsController :BaseController
@@ -51,6 +54,7 @@ namespace Web.Controllers
             //...
             if (ModelState.IsValid)
             {
+                this.AddNotification("Tweet composed.", NotificationType.INFO);
                 return RedirectToAction("Index", "Home");
             }
             return View(model);
@@ -67,7 +71,7 @@ namespace Web.Controllers
                 CreatedAt = DateTime.Now,
                 ReceiverId = favoutireTweet.UserId,
                 SenderId = loggedUserId,
-                Type = NotificationType.Like,
+                Type = Twitter.Data.Models.NotificationType.Like,
                 Seen = false
             };
            

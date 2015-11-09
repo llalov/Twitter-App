@@ -4,16 +4,16 @@
 
 {
     @Html.AntiForgeryToken()
-    <div class="form-group">
+    <div class="form-group" >
         @Html.LabelFor(m => m.Content, "", new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.ValidationMessageFor(m => m.Content, "", new { @class = "text-danger" })
             @Html.TextAreaFor(m => m.Content, new { @class = "form-control", @cols = 80, @rows = 5 })
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group"style="width: 31rem !important">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Tweet" />
+            <input type="submit" class="btn btn-default" style="background-color: #15B6FF; float: right" value="Tweet" />
         </div>
     </div>
 }
