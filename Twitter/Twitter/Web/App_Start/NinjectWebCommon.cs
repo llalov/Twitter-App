@@ -1,5 +1,3 @@
-using Twitter.Data;
-
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Web.App_Start.NinjectWebCommon), "Stop")]
 
@@ -63,8 +61,6 @@ namespace Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ITwitterData>().To<TwitterData>();
-            kernel.Bind<ITwitterDbContext>().To<TwitterDbContext>();
         }        
     }
 }
